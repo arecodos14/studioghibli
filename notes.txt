@@ -1,0 +1,240 @@
+TO DO'S
+1. Build the project
+    -creating the folder
+    -adding files
+    connecting files
+
+2. Nav Bar
+    -2 links and a name
+
+3.Portfolio item grid
+    -images
+    -titles
+    -descriptions
+    -animations
+    -javascript
+
+4.About page
+    -images
+    -split column layout
+    -content
+
+HTML
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Studio Ghibli</title>
+    <link rel="stylesheet" href="styles.css"> (to connect to styles.css to style)
+</head>
+<body>
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="left-side">
+                <div class="nav-link-wrapper">
+                    <a href="index.html">Home</a>
+                </div>
+            
+
+                <div class="nav-link-wrapper">
+                    <a href="About.html">About</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="Contact Us.html">Contact Us</a>
+                </div>
+
+            </div> 
+
+            <div class="right-side"></div>
+                <div class="brand">
+                    <div> STUDIO GHIBLI </div>
+                </div>
+            </div>
+        </div>
+________________________________________________________PORTFOLIO________________________________
+        <div class="content-wrapper"> ----------------everything below the nav bar is content wrapper (MASTER WRAPPER)
+            <div class="portfolio-items-wrapper">----------stores a collection of portfolio items (COLLECTION WRAPPER)
+
+                <div class="portfolio-item-wrapper">-----------------(SINGLE WRAPPER)
+                    <div class="portfolio-img-background" style="background-image:url(images/SpiritedAway.jpg)"></div>
+
+                        <div class="img-text-wrapper">
+                            <div class="logo-wrapper">
+                                <img src="images/logos/quip.png">
+                        </div>
+
+                        <div class="subtitle">
+                            Studio Ghibli movies are the best.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+/*JAVASCRIPT CODE WILL BE AT THE VERY BOTTOM OF THE PAGE BECAUSE JS WORKS WITH SELECTORS AND LOCATED UNDER THE END OF THE BODY (</BODY>)
+<script>
+const portfolioItems = document.querySelectorAll('.portfolio-item-wrapper') ---------creating a variable called portfolioItems and find all the elements on page
+                                                                                    have that selector in portfolio-item-wrapper.
+portfolioItems.forEach(portfolioItem => {  ---add an event listener, foEach is a function/process, run process to each one of the portfolioItems.----everytime that the page loads is going to be run on those portfolioItems
+    portfolioItem.addEventListener('mouseover', () => { ----mouseover also takes a function, for each loop we past in an argument, portfolioItems called iterator variable but it is in item slot.
+    console.log(portfolioItem); -----just go and run this process , consol.log gives you the access all the elements and it is logging this value out everytime you hove the page or element.
+    console.log(portfolioItem.childNodes[1].classList);------childNodes are nested divs which shows nodeList.
+    portfolioItem.childNodes[1].classList.add('img-darken');
+
+        })
+        
+        portfolioItem.addEventListener('mouseout', () => {
+            portfolioItem.childNodes[1].classList.remove('img-darken');
+
+        })
+
+    })
+
+
+})
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+STYLES
+body{
+    margin:0px; ----------remove the default margin
+}
+__________________________________________________________________________________
+.container{------------------------i want the container
+    display: grid;------------------ to use grid
+    grid-template-columns: 1fr 1fr 1fr;------------- with 3 fractional unit(columns) from end to end
+} 
+__________________________________________________________________________________
+/*NAVIGATION */
+.nav-wrapper {
+    display: flex; -----to placed beside each other
+    justify-content: space-between; - 
+    padding: 38px; -----
+}
+.left-side{
+    display: flex;
+}
+.nav-wrapper > .left-side >div {
+    margin-right: 20px; ------spacing
+    font-size: 0.9em; --------font size
+    text-transform: uppercase; -------Font uppercase
+}
+
+------------------------------------------------------------------connected-----------------------------
+.nav-link-wrapper{
+    height: 22px;
+    border-bottom: 1px solid transparent; -------underlined the text e.g Home when hover
+    transition: border-bottom 0.5s;
+}
+.nav-link-wrapper a{
+    color:#8a8a8a; ------color of the text
+    text-decoration: none; remove the default nderlined text
+    transition: color 0.5s; ----------animate the color and border bottom
+}
+.nav-link-wrapper:hover {
+    border-bottom: 1px solid black; --------black underlined when hover the text
+}
+.nav-link-wrapper a:hover {
+    color: black; ------------color change when hover 
+}
+----------------------------------------------------------------------------------------
+/*PORTFOLIO STYLES*/
+.portfolio-item-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.portfolio-item-wrapper{
+    position: relative; ----- it allows us to have some more flexibility on how we position each one of the item inside
+}
+.portfolio-img-background { -------------------styling the image background, style the cover
+    height: 300px; ---tall
+    width: 100%;---automatically
+    background-size: cover ;croppping the images to sit nicely and equally
+    background-position: center ;
+    background-repeat: no repeat;
+}
+/* TEXT ON TOP OF AN IMAGE*/
+.img-text-wrapper{
+    position: absolute;-----to position exactly where you want it to be
+    top: 0; ------position it on top
+    display: flex; ----text placed each other
+    flex-direction: column;
+    justify-content: center; --------to put the text center inside the img from left to right then...
+    align-items: center; ------ top to bottom 
+    height: 100%;-------take the full parent height     
+    text-align: center; ----text to be center
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+
+/*LOGO ON TOP OF THE IMAGE */
+.logo-wrapper img { ------to make it a little bit shrunken an unified.
+    width: 50%;
+    margin-bottom: 20px;
+
+}
+
+/*NEEDS TO BE MORE SPECIFIC WITH SELECTOR */ BEFORE EDITED..SEE BELOW..(1) Do not include this
+/*TEXT ON TP OF AN IMAGE */
+.subtitle {
+    font-weight: 600;
+    color: lightseagreen;
+}
+
+.img-text-wrapper .subtitle{ ------- TEXT ON TOP OF IMAGE  (3)
+    transition: 1s;
+    font-weight: 600; --------it will show the normal font weight to 600
+    color: transparent; -----text will be transaparent
+}
+
+
+.img-text-wrapper:hover .subtitle { ------the text change from black to lightseagreen when hover  (2)
+    font-weight: 600;
+    color: lightseagreen;
+}
+
+
+
+/*IMAGE TO BE DARKEN*/ /*NEEDED TO BE ON JAVASCRIPT*/
+.img-darken {
+    transition: 1s; -----animate  
+    filter: brightness(10%); 
+}
